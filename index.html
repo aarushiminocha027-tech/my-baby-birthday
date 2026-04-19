@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(to right, #000000, #434343);
+    color: white;
+    text-align: center;
+}
+
+.section {
+    padding: 60px 20px;
+}
+
+button {
+    padding: 12px 20px;
+    margin: 10px;
+    border-radius: 20px;
+    border: none;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+}
+
+.slideshow {
+    position: relative;
+    max-width: 300px;
+    margin: auto;
+}
+
+.slide { display: none; }
+
+.slide img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.fade {
+    animation: fadeEffect 1.5s;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0.4;}
+    to {opacity: 1;}
+}
+
+.caption { margin-top: 10px; }
+
+.zoomed {
+    transform: scale(1.2);
+    transition: 0.3s;
+}
+
+.popup {
+    display: none;
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 20px;
+    width: 300px;
+    margin: auto;
+}
+
+/* typing effect */
+#typedText {
+    font-size: 20px;
+    width: 70%;
+    margin: auto;
+    min-height: 80px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="section">
+<h2>Enter our special date 💖</h2>
+<input type="password" id="password">
+<br><br>
+<button onclick="unlock()">Enter</button>
+</div>
+
+<div id="content" style="display:none;">
+
+<!-- INTRO -->
+<div class="section">
+<h1>🎂 Happy Birthday My Love ❤️</h1>
+<p id="typedText"></p>
+</div>
+
+<!-- REST SAME -->
+<div class="section">
+<h2>😏 Roast</h2>
+<p>
+All that height and attitude,<br>
+yet one look from me and you’re completely under control 😌
+</p>
+</div>
+
+<div class="section">
+<h2>💖 Love</h2>
+<p>
+Sometimes I just look at you and quietly thank life,<br>
+For giving me someone I never even knew I needed this much ❤️
+</p>
+</div>
+
+<!-- SLIDESHOW -->
+<div class="section">
+<h2>📸 Our Moments</h2>
+
+<div class="slideshow">
+
+<div class="slide fade">
+<img src="photo1.jpg" onclick="zoom(this)">
+<div class="caption">Our photo together 💖</div>
+</div>
+
+<div class="slide fade">
+<img src="photo2.jpg" onclick="zoom(this)">
+<div class="caption">Our first date 🥺</div>
+</div>
+
+<div class="slide fade">
+<img src="photo3.jpg" onclick="zoom(this)">
+<div class="caption">My favourite photo of ours 😌💖</div>
+</div>
+
+<div class="slide fade">
+<img src="photo4.jpg" onclick="zoom(this)">
+<div class="caption">The day my favorite person was born ❤️</div>
+</div>
+
+</div>
+</div>
+
+<!-- SURPRISE -->
+<div class="section">
+<h2>🎁 Click Surprise</h2>
+
+<button onclick="toggle('s1')">Tap me 😏</button>
+<div id="s1" class="popup">
+You’re always in my prayers, my bachu, in every little wish I make,<br><br>
+I just hope I can make your birthday as special as you’ve always dreamed, because you mean my whole world to me.<br><br>
+My life is nothing without you ❤️
+</div>
+
+</div>
+
+<!-- FINAL -->
+<div class="section">
+<h2>🎂 Final</h2>
+<p>
+I don’t know whether I’ll be there with you today or not, but I’m always there for you, no matter what 🤍<br><br>
+
+23rd September… the day we started us. It was magical...<br><br>
+
+Every single day with you feels like a blessing ❤️<br><br>
+
+Happy Birthday, my love 🥺🎂<br><br>
+
+My baby, I miss you 🤍
+</p>
+
+<h1>🎉🎂 HAPPY BIRTHDAY 🎂🎉</h1>
+</div>
+
+</div>
+
+<script>
+
+/* PASSWORD */
+function unlock(){
+    let pass = document.getElementById("password").value;
+    if(pass === "2309"){
+        document.getElementById("content").style.display = "block";
+        startSlideshow();
+        typeEffect();
+    } else {
+        alert("Wrong date 😏");
+    }
+}
+
+/* TYPING EFFECT */
+let text = "You didn’t just enter my life, you became my safe place... And somehow, everything feels right when I’m with you ❤️";
+let i = 0;
+
+function typeEffect(){
+    if(i < text.length){
+        document.getElementById("typedText").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 40);
+    }
+}
+
+/* SLIDESHOW */
+let slideIndex = 0;
+function startSlideshow(){
+    let slides = document.getElementsByClassName("slide");
+    for(let i=0;i<slides.length;i++){
+        slides[i].style.display="none";
+    }
+    slideIndex++;
+    if(slideIndex > slides.length){ slideIndex = 1; }
+    slides[slideIndex-1].style.display="block";
+    setTimeout(startSlideshow, 2500);
+}
+
+/* ZOOM */
+function zoom(img){
+    img.classList.toggle("zoomed");
+}
+
+/* POPUP */
+function toggle(id){
+    let el = document.getElementById(id);
+    el.style.display = (el.style.display === "block") ? "none" : "block";
+}
+
+</script>
+
+</body>
+</html>
